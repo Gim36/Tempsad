@@ -79,11 +79,12 @@ int main() {
 		}
 	}
 
-	for (int i = 0; i < k - 1; i++) {
-		vector<int> exponents = dte[queries[i]];
-		cout << table[exponents] << " ";
+	for (int i = 0; i < k; ++i) {
+		auto d = queries[i];
+		vector<int> exponents = dte[d];
+		cout << table[exponents] << (i == k - 1 ? "" : " ");
 	}
 
-	cout << table[dte[queries[k - 1]]] << endl;
+	cout << endl;
 	return 0;
 }
