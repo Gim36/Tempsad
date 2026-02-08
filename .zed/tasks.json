@@ -1,0 +1,58 @@
+[
+  {
+    "label": "Run Cpp",
+    "shell": "system",
+    "command": "g++",
+    "args": [
+      "$ZED_FILE",
+      "-o",
+      "./Out/Bin/Main.exe",
+      ";",
+      "./Out/Bin/Main.exe",
+    ],
+  },
+  {
+    "label": "Test Cpp (Project)",
+    "shell": "system",
+    "command": "g++",
+    "args": [
+      "./Out/test.cpp",
+      "-o",
+      "./Out/Bin/Test.exe",
+      "-std=c++17",
+      "-static",
+      "&&",
+      "./Out/Bin/Test.exe",
+      "$ZED_DIRNAME",
+    ],
+  },
+  {
+    "label": "Test Cpp (File)",
+    "shell": "system",
+    "command": "g++",
+    "args": [
+      "./Out/test.cpp",
+      "-o",
+      "./Out/Bin/Test.exe",
+      "-std=c++17",
+      "-static",
+      "&&",
+      "./Out/Bin/Test.exe",
+      "$ZED_FILE",
+    ],
+  },
+  {
+    "label": "Push to GitHub",
+    "shell": "system",
+    "command": "powershell",
+    "args": [
+      "-Command",
+      "git add .; git commit -m \"$(Get-Date -Format 'dd/MM/yyyy/HH:mm:ss')\"; git push",
+    ],
+  },
+  {
+    "label": "Fetch from GitHub",
+    "shell": "system",
+    "command": "git fetch --prune origin ; git reset --hard origin/main ; git clean -f -d",
+  },
+]
